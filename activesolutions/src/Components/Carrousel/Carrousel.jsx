@@ -15,7 +15,7 @@ const Carrousel = () =>{
                             <div className="row align-items-center justify-content-center justify-content-lg-start">
                                 <div className="col-lg-7 text-center text-lg-start">
                                     <h6 className="text-white text-uppercase mb-3 animated slideInDown">// Active Solutions //</h6>
-                                    <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">Taller de <br></br>electromecanica</h1>
+                                    <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">Electromecanica</h1>
                                 </div>
                                 <div className="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img className="img-fluid" src="img/carousel-1.png" alt=""/>

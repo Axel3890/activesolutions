@@ -70,19 +70,20 @@ const Contact = ()=>{
                         <div class="col-md-4">
                             <div class="bg-light d-flex flex-column justify-content-center p-4">
                                 <h5 class="text-uppercase">// Email //</h5>
-                                <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>book@example.com</p>
+                                <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>activesolutionselectro@gmail.com</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="bg-light d-flex flex-column justify-content-center p-4">
                                 <h5 class="text-uppercase">// Instagram //</h5>
-                                <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>info@example.com</p>
+                                <p class="m-0"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/activesolutions.electro/" target="blank">Active Solutions</a></p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="bg-light d-flex flex-column justify-content-center p-4">
                                 <h5 class="text-uppercase">// Whatsapp //</h5>
-                                <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i>tech@example.com</p>
+                                <p class="m-0"><i class="fa fa-envelope-open text-primary me-2"></i><a href="https://wa.link/ovq3mg" target="blank"><small><i class="fa fa-phone"></i>+54 9 11 7639-5279</small></a>
+</p>
                             </div>
                         </div>
                     </div>

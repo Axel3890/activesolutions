@@ -40,7 +40,7 @@ const Servicios = () =>{
                             <div className="row g-4">
                                 <div className="col-md-6" style={{minHeight: "350px"}}>
                                     <div className="position-relative h-100">
-                                        <img className="position-absolute img-fluid w-100 h-100" src={boroscopio}
+                                        <img className="position-absolute img-fluid w-100 h-100" src={diagnostico}
                                             style={{objectFit: "cover"}} alt="" />
                                     </div>
                                 </div>
@@ -50,7 +50,6 @@ const Servicios = () =>{
                                     <p><i className="fa fa-check text-success me-3"></i>Incluye eliminacion de código de fallas</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Trabajadores capacitados</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Equipamiento moderno</p>
-                                    <a href="" className="btn btn-primary py-3 px-5 mt-3">Saber mas<i className="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +67,6 @@ const Servicios = () =>{
                                     <p><i className="fa fa-check text-success me-3"></i>Diagnostico Nvl 1: 1hs de analisis</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Diagnostico Nvl 2: 3hs de analisis: Fallas en momentos especificos</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Diagnostico Nvl 3: 5hs de analisis: Fallas esporádicas y aparecen en cualquier momento</p>
-                                    <a href="" className="btn btn-primary py-3 px-5 mt-3">Saber mas<i className="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +74,7 @@ const Servicios = () =>{
                             <div className="row g-4">
                                 <div className="col-md-6" style={{minHeight: "350px"}}>
                                     <div className="position-relative h-100">
-                                        <img className="position-absolute img-fluid w-100 h-100" src={diagnostico}
+                                        <img className="position-absolute img-fluid w-100 h-100" src={boroscopio}
                                             style={{objectFit: "cover"}} alt=""/>
                                     </div>
                                 </div>
@@ -86,7 +84,6 @@ const Servicios = () =>{
                                     <p><i className="fa fa-check text-success me-3"></i>Servicio de calidad</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Trabajadores capacitados</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Equipamiento moderno</p>
-                                    <a href="" className="btn btn-primary py-3 px-5 mt-3">Saber mas<i className="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +101,6 @@ const Servicios = () =>{
                                     <p><i className="fa fa-check text-success me-3"></i>Servicios de diagnosis</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Servicios de antenas</p>
                                     <p><i className="fa fa-check text-success me-3"></i>Y de inmovilizadores</p>
-                                    <a href="" className="btn btn-primary py-3 px-5 mt-3">Saber mas<i className="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </div>
