@@ -73,3 +73,12 @@ html{scroll-padding-top:110px}
  .hero-index{font-size:.5rem}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hero-photo{transform:none}html{scroll-behavior:auto}}
+
+/* Brand, location and helpful answers */
+.header .brand{width:clamp(165px,20vw,260px);flex-shrink:0}.brand-logo{width:100%;height:auto;object-fit:contain}
+.header nav{gap:clamp(14px,2vw,30px)}.inline-link{text-decoration:underline;text-underline-offset:3px}.inline-link:hover{color:#076cc3}
+.location{padding:64px 0;border-bottom:1px solid var(--line)}.location-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}.location h2{margin:16px 0 20px}.location p{max-width:460px;color:var(--muted)}.location .button{margin-top:25px}.location .location-note{margin-top:18px;font-size:.85rem}.location iframe{display:block;width:100%;height:380px;border:0;background:#d5dce0}
+.faq{padding:48px 0 58px}.faq-list{margin-top:25px;max-width:960px}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{cursor:pointer;font-weight:650;line-height:1.5}.faq details p{padding:14px 20px 0 0;color:var(--muted);max-width:800px}.dialog-whatsapp{display:block;width:fit-content;margin:14px auto}.direct-whatsapp{margin-top:18px;font-size:.8rem}
+.breadcrumbs{display:flex;flex-wrap:wrap;gap:10px;font-size:.85rem;color:#c7d4de;margin-bottom:35px}.breadcrumbs a{text-decoration:underline;text-underline-offset:4px}.error-page{min-height:100dvh;display:flex;flex-direction:column}.error-header{padding-block:30px;border-bottom:1px solid #ffffff25}.error-header .brand{width:240px}.error-main{padding-block:55px 90px;flex:1}.error-code{font-size:clamp(5rem,15vw,11rem);line-height:1;color:var(--blue);letter-spacing:-.08em}.error-main h1{margin:25px 0;font-size:clamp(2rem,5vw,3.5rem)}.error-main p{max-width:550px;color:#c7d4de}.error-actions{display:flex;gap:25px;flex-wrap:wrap;margin-top:32px}
+@media(max-width:960px){.header-cta{display:none}.location-grid{gap:30px}.footer-content{flex-wrap:wrap}}
+@media(max-width:760px){.header .brand{width:210px;max-width:70%}.location{padding:40px 0}.location-grid{grid-template-columns:1fr;gap:30px}.location iframe{height:320px}.faq{padding:35px 0 40px}footer nav{flex-wrap:wrap;row-gap:15px}.error-main{padding-top:35px}}

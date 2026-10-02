@@ -99,4 +99,12 @@ const copyButton = document.querySelector('#copy-message');
 form.addEventListener('submit', event => { event.preventDefault(); if (!form.reportValidity()) return; const data = new FormData(form); const name = data.get('name').trim(); const vehicle = data.get('vehicle').trim(); const issue = data.get('issue').trim(); if (!name || !vehicle || !issue) { const missing = !name ? form.elements.name : !vehicle ? form.elements.vehicle : form.elements.issue; missing.setCustomValidity('Completá este campo con tu información.'); missing.reportValidity(); missing.addEventListener('input', () => missing.setCustomValidity(''), {once:true}); return; } const phone = data.get('phone').trim(); preview.value = `Hola, Active Solutions. Soy ${name}.\nQuisiera consultar por un turno.\n\nVehículo: ${vehicle}\nConsulta: ${issue}${phone ? `\nTeléfono: ${phone}` : ''}\n\n¿Qué disponibilidad tienen?`; copyStatus.textContent = 'Todavía no se envió ningún mensaje.'; copyButton.textContent = 'Copiar mensaje'; dialog.showModal(); });
 document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => { if (event.target === dialog) { const bounds = dialog.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close(); } });
-copyButton.addEventListener('click', async () => { try { await navigator.clipboard.writeText(preview.value); copyButton.textContent = 'Mensaje copiado'; copyStatus.textContent = 'Ahora abrí Instagram y pegalo en el chat del taller.'; } catch { preview.focus(); preview.select(); copyStatus.textContent = 'Seleccionamos el mensaje. Copialo manualmente y pegalo en Instagram.'; } });
+copyButton.addEventListener('click', async () => { try { await navigator.clipboard.writeText(preview.value); copyButton.textContent = 'Mensaje copiado'; copyStatus.textContent = 'Ahora abrí WhatsApp y pegalo en el chat del taller.'; } catch { preview.focus(); preview.select(); copyStatus.textContent = 'Seleccionamos el mensaje. Copialo manualmente y pegalo en WhatsApp.'; } });
+
+// Direct links to a service reveal its details, including shared fragment URLs.
+function revealLinkedService() {
+  const target = document.getElementById(location.hash.slice(1));
+  if (target?.matches('details.service')) target.open = true;
+}
+window.addEventListener('hashchange', revealLinkedService);
+revealLinkedService();
