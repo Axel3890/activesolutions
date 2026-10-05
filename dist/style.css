@@ -82,3 +82,13 @@ html{scroll-padding-top:110px}
 .breadcrumbs{display:flex;flex-wrap:wrap;gap:10px;font-size:.85rem;color:#c7d4de;margin-bottom:35px}.breadcrumbs a{text-decoration:underline;text-underline-offset:4px}.error-page{min-height:100dvh;display:flex;flex-direction:column}.error-header{padding-block:30px;border-bottom:1px solid #ffffff25}.error-header .brand{width:240px}.error-main{padding-block:55px 90px;flex:1}.error-code{font-size:clamp(5rem,15vw,11rem);line-height:1;color:var(--blue);letter-spacing:-.08em}.error-main h1{margin:25px 0;font-size:clamp(2rem,5vw,3.5rem)}.error-main p{max-width:550px;color:#c7d4de}.error-actions{display:flex;gap:25px;flex-wrap:wrap;margin-top:32px}
 @media(max-width:960px){.header-cta{display:none}.location-grid{gap:30px}.footer-content{flex-wrap:wrap}}
 @media(max-width:760px){.header .brand{width:210px;max-width:70%}.location{padding:40px 0}.location-grid{grid-template-columns:1fr;gap:30px}.location iframe{height:320px}.faq{padding:35px 0 40px}footer nav{flex-wrap:wrap;row-gap:15px}.error-main{padding-top:35px}}
+
+/* Service coverage */
+.coverage{padding:35px 0 42px}
+.coverage-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:7%;border-top:1px solid var(--line);padding-top:33px}
+.coverage h2{font-size:clamp(1.8rem,2.4vw,2.5rem);margin-top:13px}
+.coverage p:not(.eyebrow){color:var(--muted);font-size:.9rem;line-height:1.6;max-width:430px;margin-top:16px}
+.coverage .text-link{margin-top:14px}
+.coverage-provinces{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;column-gap:30px;align-content:center}
+.coverage-provinces li{padding:17px 0;border-bottom:1px solid var(--line);font-size:1rem;font-weight:550}
+@media(max-width:760px){.coverage{padding:30px 0}.coverage-layout{grid-template-columns:1fr;gap:24px;padding-top:27px}.coverage-provinces{column-gap:20px}.coverage-provinces li{font-size:.9rem;padding:14px 0}}

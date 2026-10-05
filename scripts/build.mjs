@@ -18,8 +18,9 @@ const origin = url.origin;
 const preview = process.env.VERCEL_ENV === 'preview' || !configured;
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const maps = 'https://www.google.com/maps/search/?api=1&query=-34.516272707591455%2C-58.72331865300859';
-const description = 'Diagnóstico electrónico, electricidad automotriz y mecánica general. Consultá por WhatsApp, coordiná tu turno y encontrá cómo llegar a Active Solutions.';
-const services = ['Diagnóstico electrónico', 'Electricidad automotriz', 'Mecánica general', 'Arranque y carga'];
+const description = "Diagnóstico avanzado, reparación de módulos, mecánica general y grúa. Cobertura en Buenos Aires, Misiones, Salta, Catamarca, San Luis y Santiago del Estero.";
+const services = ["Diagnósticos avanzados","Reparación y programación de módulos","Mecánica general","Servicio de grúa","Electricidad automotriz","Arranque y carga"];
+const provinces = ["Buenos Aires","Misiones","Salta","Catamarca","San Luis","Santiago del Estero"];
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -27,6 +28,7 @@ const schema = {
       logo:`${origin}/assets/logo-original.png`,image:`${origin}/assets/social-card.png`,
       geo:{'@type':'GeoCoordinates',latitude:-34.516272707591455,longitude:-58.72331865300859},hasMap:maps,
       sameAs:['https://www.instagram.com/activesolutions.electro/'],
+      areaServed:provinces.map(name=>({'@type':'AdministrativeArea',name,containedInPlace:{'@type':'Country',name:'Argentina'}})),
       contactPoint:{'@type':'ContactPoint',contactType:'Consultas y turnos',url:'https://wa.link/gytz4k',availableLanguage:'es'},
       hasOfferCatalog:{'@type':'OfferCatalog',name:'Servicios automotrices',itemListElement:services.map(name=>({'@type':'Offer',itemOffered:{'@type':'Service',name}}))}},
     {'@type':'WebSite','@id':`${origin}/#website`,name:'Active Solutions',url:`${origin}/`,inLanguage:'es-AR',publisher:{'@id':`${origin}/#taller`}},

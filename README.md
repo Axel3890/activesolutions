@@ -41,3 +41,7 @@ Las previews incluyen `noindex,follow`. El build local sin dominio usa localhost
 - Logo original adjunto conservado en `dist/assets/logo-original.png`; wrapper SVG con el encuadre de la marca para el header. El favicon es un monograma A con motivo de circuito. La imagen social se compone con la marca y textos del sitio.
 
 Pendiente de confirmación del propietario: dirección postal (calle, altura, localidad), horarios, servicios definitivos y fotos reales del taller que reemplacen las ilustrativas. Para SEO local, mantener esos datos consistentes con Google Business Profile. Tras publicar, enviar `/sitemap.xml` en Search Console y verificar el dominio. Los cambios técnicos no garantizan posiciones ni citas en respuestas de IA.
+
+## Actualización de servicios y cobertura
+
+Incluye diagnósticos avanzados (escaneo, flujometría de datos, verificación de voltajes, sensores, oscilogramas y cableado), reparación y programación de ECUs, tableros, airbags y ABS (clonación, blanqueo y reparación), mecánica general, grúa, electricidad y arranque/carga. Cobertura informada por el propietario: Buenos Aires, Misiones, Salta, Catamarca, San Luis y Santiago del Estero. Cada localidad y servicio requieren confirmar disponibilidad. Contenido, preguntas frecuentes y datos estructurados sincronizados.
