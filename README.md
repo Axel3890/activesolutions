@@ -26,9 +26,9 @@ El formulario prepara un mensaje, permite copiarlo y abre https://wa.link/gytz4k
 
 `vercel.json` configura Framework Other, build `node scripts/build.mjs` y salida `public`. Conservar Root Directory `./`. Si el proyecto ya tiene overrides de build/salida en Vercel, dejarlos coincidir con estos valores.
 
-El dominio se obtiene de `SITE_URL` (opcional) o de `VERCEL_PROJECT_PRODUCTION_URL`. Este último necesita las variables de sistema de Vercel habilitadas. Al agregar un dominio propio, desplegar de nuevo; también se puede fijar `SITE_URL=https://dominio.com`. No se usa el dominio temporal de cada deployment como canonical.
+El dominio canónico confirmado es `https://www.activesolutions.ar/`, fijado en `scripts/build.mjs`. Canonical, Open Graph, imágenes sociales, datos estructurados, robots.txt y sitemap.xml usan ese dominio; las variables antiguas de Vercel no lo reemplazan. Si cambia el dominio, actualizar esa constante y los archivos robots.txt/sitemap.xml de `dist/`, y volver a desplegar. El dominio sin www ya redirige a www desde la configuración de hosting.
 
-Las previews incluyen `noindex,follow`. El build local sin dominio usa localhost y también noindex. La producción permite indexación. `public/` es salida generada y no se versiona.
+Las previews y el build local incluyen `noindex,follow`, manteniendo el canonical de producción. La producción permite indexación. `public/` es salida generada y no se versiona. El H1 visible comienza con Active Solutions.
 
 ## SEO, ubicación y marca
 

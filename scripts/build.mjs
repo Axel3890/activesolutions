@@ -4,18 +4,17 @@ import path from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, 'public');
-const configured = process.env.SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
-if (process.env.VERCEL && !configured) {
-  throw new Error('Enable Vercel system environment variables or set SITE_URL to the production origin.');
-}
-const raw = configured || 'http://localhost:8000';
+// The confirmed public domain is authoritative, including on preview builds.
+// Do not let a stale deployment environment point search engines to vercel.app.
+const raw = 'https://www.activesolutions.ar/';
 const url = new URL(raw.includes('://') ? raw : `https://${raw}`);
 if (url.username || url.password || url.pathname !== '/' || url.search || url.hash || !['http:', 'https:'].includes(url.protocol)) {
   throw new Error('SITE_URL must contain only the site origin, for example https://your-domain.com');
 }
 if (process.env.VERCEL && url.protocol !== 'https:') throw new Error('Production origin must use HTTPS.');
 const origin = url.origin;
-const preview = process.env.VERCEL_ENV === 'preview' || !configured;
+const preview = ['preview', 'development'].includes(process.env.VERCEL_ENV)
+  || (!process.env.VERCEL && process.env.VERCEL_ENV !== 'production');
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const maps = 'https://www.google.com/maps/search/?api=1&query=-34.516272707591455%2C-58.72331865300859';
 const description = "Diagnóstico avanzado, reparación de módulos, mecánica general y grúa. Cobertura en Buenos Aires, Misiones, Salta, Catamarca, San Luis y Santiago del Estero.";
