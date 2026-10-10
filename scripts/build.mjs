@@ -18,7 +18,7 @@ const preview = ['preview', 'development'].includes(process.env.VERCEL_ENV)
 const escape = value => String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const maps = 'https://www.google.com/maps/search/?api=1&query=-34.516272707591455%2C-58.72331865300859';
 const description = "Diagnóstico avanzado, reparación de módulos, mecánica general y grúa. Cobertura en Buenos Aires, Misiones, Salta, Catamarca, San Luis y Santiago del Estero.";
-const services = ["Diagnósticos avanzados","Reparación y programación de módulos","Mecánica general","Servicio de grúa","Electricidad automotriz","Arranque y carga"];
+const services = ["Diagnósticos avanzados","Reparación y programación de módulos","Mecánica general","Servicio de grúa","Electricidad automotriz","Arranque y carga","Mantenimiento de flota","Compra, venta y consignaciones de vehículos","Financiamiento","Asesoramiento"];
 const provinces = ["Buenos Aires","Misiones","Salta","Catamarca","San Luis","Santiago del Estero"];
 const schema = {
   '@context': 'https://schema.org',
