@@ -10,7 +10,13 @@ module.exports = async function handler(req, res) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({error:'Método no permitido.'});
   }
-  if (req.headers.origin !== 'https://www.activesolutions.ar') {
+  // Exact trusted origins only; never trust arbitrary Host headers or *.vercel.app.
+  const allowedOrigins = new Set(['https://www.activesolutions.ar', 'https://activesolutions.ar']);
+  for (const key of ['VERCEL_URL', 'VERCEL_BRANCH_URL', 'VERCEL_PROJECT_PRODUCTION_URL']) {
+    const host = process.env[key];
+    if (host && /^[a-z0-9.-]+$/i.test(host)) allowedOrigins.add(`https://${host.toLowerCase()}`);
+  }
+  if (!allowedOrigins.has(req.headers.origin)) {
     return res.status(403).json({error:'Enviá el comentario desde nuestra web.'});
   }
   if (!String(req.headers['content-type'] || '').startsWith('application/json')) {
