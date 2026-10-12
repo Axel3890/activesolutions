@@ -3,7 +3,7 @@
   "framework": null,
   "buildCommand": "node scripts/build.mjs",
   "outputDirectory": "public",
-  "installCommand": "",
+  "installCommand": "npm ci --ignore-scripts",
   "cleanUrls": true,
   "headers": [
     {

@@ -45,3 +45,14 @@ Pendiente de confirmación del propietario: dirección postal (calle, altura, lo
 ## Actualización de servicios y cobertura
 
 Incluye diagnósticos avanzados (escaneo, flujometría de datos, verificación de voltajes, sensores, oscilogramas y cableado), reparación y programación de ECUs, tableros, airbags y ABS (clonación, blanqueo y reparación), mecánica general, grúa, electricidad y arranque/carga. Cobertura informada por el propietario: Buenos Aires, Misiones, Salta, Catamarca, San Luis y Santiago del Estero. Cada localidad y servicio requieren confirmar disponibilidad. Contenido, preguntas frecuentes y datos estructurados sincronizados.
+
+## Comentarios por correo
+
+La sección Ayudanos a mejorar usa POST /api/feedback (Vercel Function) y SMTP con TLS en el puerto 465. Configurar en Vercel, para Production:
+
+- SMTP_HOST: smtp.gmail.com
+- SMTP_USER: activesolutionss.electro@gmail.com
+- SMTP_PASS: contraseña de aplicación de Gmail (secreta, solo del servidor).
+- FEEDBACK_TO: activesolutionss.electro@gmail.com
+
+Volver a desplegar después de configurar las variables. El build habilita el formulario solo cuando están presentes; nunca copia los valores SMTP al HTML. No guardar contraseñas en dist/, public/ ni Git. El receptor es fijo; el correo del visitante se usa únicamente como Reply-To. Se validan los campos, el origen, un campo trampa y un límite de tres intentos cada diez minutos por IP e instancia. Este límite es preventivo y no global: para protección distribuida adicional usar reglas de Vercel Firewall. No se envían respuestas automáticas. Las pruebas locales simulan SMTP, sin enviar mensajes reales.

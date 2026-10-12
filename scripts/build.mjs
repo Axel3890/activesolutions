@@ -49,6 +49,11 @@ cpSync(path.join(root,'dist'),output,{recursive:true});
 let html = readFileSync(path.join(output,'index.html'),'utf8');
 html = html.replace(/<meta name="description"[^>]+>/,`<meta name="description" content="${escape(description)}">`);
 html = html.replace('</head>',`${metadata}\n</head>`);
+// Only publish availability, never the SMTP credentials themselves.
+if (['SMTP_HOST','SMTP_USER','SMTP_PASS','FEEDBACK_TO'].every(key => process.env[key])) {
+  html = html.replace('disabled data-feedback-submit', 'data-feedback-submit');
+  html = html.replace('El envío por correo todavía no está disponible. Podés compartir tu sugerencia por WhatsApp.', '');
+}
 writeFileSync(path.join(output,'index.html'),html);
 writeFileSync(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\n${preview ? '' : `\nSitemap: ${origin}/sitemap.xml\n`}`);
 writeFileSync(path.join(output,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${escape(origin)}/</loc></url></urlset>\n`);
