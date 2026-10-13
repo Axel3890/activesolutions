@@ -48,11 +48,11 @@ Incluye diagnósticos avanzados (escaneo, flujometría de datos, verificación d
 
 ## Comentarios por correo
 
-La sección Ayudanos a mejorar usa POST /api/feedback (Vercel Function) y SMTP con TLS en el puerto 465. Configurar en Vercel, para Production:
+La página /feedback, enlazada desde el footer, pide solo nombre y mensaje. Usa POST /api/feedback (Vercel Function) y SMTP con TLS en el puerto 465. Configurar en Vercel, para Production:
 
 - SMTP_HOST: smtp.gmail.com
 - SMTP_USER: activesolutionss.electro@gmail.com
 - SMTP_PASS: contraseña de aplicación de Gmail (secreta, solo del servidor).
 - FEEDBACK_TO: activesolutionss.electro@gmail.com
 
-Volver a desplegar después de configurar las variables. El build habilita el formulario solo cuando están presentes; nunca copia los valores SMTP al HTML. No guardar contraseñas en dist/, public/ ni Git. El receptor es fijo; el correo del visitante se usa únicamente como Reply-To. Se validan los campos, el origen, un campo trampa y un límite de tres intentos cada diez minutos por IP e instancia. Este límite es preventivo y no global: para protección distribuida adicional usar reglas de Vercel Firewall. No se envían respuestas automáticas. Las pruebas locales simulan SMTP, sin enviar mensajes reales.
+Volver a desplegar después de configurar las variables. El build habilita el formulario solo cuando están presentes; nunca copia los valores SMTP al HTML. No guardar contraseñas en dist/, public/ ni Git. El receptor es fijo; no se pide correo al visitante ni se agrega Reply-To. Se validan los campos, el origen, un campo trampa y un límite de tres intentos cada diez minutos por IP e instancia. Este límite es preventivo y no global: para protección distribuida adicional usar reglas de Vercel Firewall. No se envían respuestas automáticas. Las pruebas locales simulan SMTP, sin enviar mensajes reales.

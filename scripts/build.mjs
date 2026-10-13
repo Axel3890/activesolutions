@@ -49,12 +49,27 @@ cpSync(path.join(root,'dist'),output,{recursive:true});
 let html = readFileSync(path.join(output,'index.html'),'utf8');
 html = html.replace(/<meta name="description"[^>]+>/,`<meta name="description" content="${escape(description)}">`);
 html = html.replace('</head>',`${metadata}\n</head>`);
+writeFileSync(path.join(output,'index.html'),html);
+let feedback = readFileSync(path.join(output,'feedback.html'),'utf8');
+const feedbackTitle = 'Ayudanos a mejorar | Active Solutions';
+const feedbackDescription = 'Compartí tu experiencia o una sugerencia para ayudarnos a mejorar la atención en Active Solutions.';
+const feedbackSchema = {'@context':'https://schema.org','@graph':[
+  {'@type':'WebPage','@id':`${origin}/feedback#webpage`,url:`${origin}/feedback`,name:feedbackTitle,description:feedbackDescription,inLanguage:'es-AR',isPartOf:{'@id':`${origin}/#website`},breadcrumb:{'@id':`${origin}/feedback#breadcrumbs`}},
+  {'@type':'BreadcrumbList','@id':`${origin}/feedback#breadcrumbs`,itemListElement:[{'@type':'ListItem',position:1,name:'Inicio',item:`${origin}/`},{'@type':'ListItem',position:2,name:'Ayudanos a mejorar',item:`${origin}/feedback`}]}
+]};
+const feedbackMetadata = metadata
+  .replace(`rel="canonical" href="${escape(origin)}/"`, `rel="canonical" href="${escape(origin)}/feedback"`)
+  .replace(`property="og:url" content="${escape(origin)}/"`, `property="og:url" content="${escape(origin)}/feedback"`)
+  .replace(/(property="og:title"|name="twitter:title") content="[^"]*"/g, `$1 content="${escape(feedbackTitle)}"`)
+  .replace(/(property="og:description"|name="twitter:description") content="[^"]*"/g, `$1 content="${escape(feedbackDescription)}"`)
+  .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(feedbackSchema).replaceAll('<','\\u003c')}</script>`);
+feedback = feedback.replace('</head>',`${feedbackMetadata}\n</head>`);
 // Only publish availability, never the SMTP credentials themselves.
 if (['SMTP_HOST','SMTP_USER','SMTP_PASS','FEEDBACK_TO'].every(key => process.env[key])) {
-  html = html.replace('disabled data-feedback-submit', 'data-feedback-submit');
-  html = html.replace('El envío por correo todavía no está disponible. Podés compartir tu sugerencia por WhatsApp.', '');
+  feedback = feedback.replace('disabled data-feedback-submit', 'data-feedback-submit');
+  feedback = feedback.replace('El envío por correo todavía no está disponible. Podés compartir tu sugerencia por WhatsApp.', '');
 }
-writeFileSync(path.join(output,'index.html'),html);
+writeFileSync(path.join(output,'feedback.html'),feedback);
 writeFileSync(path.join(output,'robots.txt'),`User-agent: *\nAllow: /\n${preview ? '' : `\nSitemap: ${origin}/sitemap.xml\n`}`);
-writeFileSync(path.join(output,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${escape(origin)}/</loc></url></urlset>\n`);
+writeFileSync(path.join(output,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${escape(origin)}/</loc></url><url><loc>${escape(origin)}/feedback</loc></url></urlset>\n`);
 console.log(`Static site built in public/ (${preview ? 'noindex preview' : 'production'}; origin: ${origin}).`);

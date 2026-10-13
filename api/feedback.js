@@ -32,10 +32,9 @@ module.exports = async function handler(req, res) {
   }
   if (body.website) return res.status(400).json({error:'No pudimos procesar el comentario.'});
   const name = typeof body.name === 'string' ? body.name.trim() : '';
-  const email = typeof body.email === 'string' ? body.email.trim() : '';
   const message = typeof body.message === 'string' ? body.message.trim() : '';
-  if (!name || name.length > 80 || /[\r\n]/.test(name) || email.length > 254 || !emailPattern.test(email) || message.length < 10 || message.length > 3000) {
-    return res.status(400).json({error:'Completá tu nombre, un correo válido y un comentario de entre 10 y 3000 caracteres.'});
+  if (!name || name.length > 80 || /[\r\n]/.test(name) || message.length < 10 || message.length > 3000) {
+    return res.status(400).json({error:'Completá tu nombre y un comentario de entre 10 y 3000 caracteres.'});
   }
   const {SMTP_HOST, SMTP_USER, SMTP_PASS, FEEDBACK_TO} = process.env;
   if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !emailPattern.test(SMTP_USER) || !emailPattern.test(FEEDBACK_TO || '')) {
@@ -59,9 +58,9 @@ module.exports = async function handler(req, res) {
   try {
     const info = await transport.sendMail({
       from:{name:'Active Solutions · Comentarios', address:SMTP_USER},
-      to:FEEDBACK_TO, replyTo:email,
+      to:FEEDBACK_TO,
       subject:'Nuevo comentario · Ayudanos a mejorar',
-      text:`Nombre: ${name}\nCorreo: ${email}\n\n${message}`
+      text:`Nombre: ${name}\n\n${message}`
     });
     if (!info.accepted?.length) throw new Error('Recipient not accepted');
     return res.status(200).json({ok:true});
